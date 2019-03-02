@@ -25,3 +25,4 @@ C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csp
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form5.resources
+C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form6.resources
