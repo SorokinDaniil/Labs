@@ -22,6 +22,9 @@ namespace WindowsForms
             InitializeComponent();
 
             //textBox3.TextChanged += TextBox3_TextChanged;
+            textBox1.KeyPress += TextBox1_KeyPress;
+            textBox2.KeyPress += TextBox1_KeyPress;
+            textBox3    .KeyPress += TextBox1_KeyPress;
             textBox1.Enter += TextBox1_Enter;
             textBox2.Enter += TextBox1_Enter;
             textBox3.Enter += TextBox1_Enter;

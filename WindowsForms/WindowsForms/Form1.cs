@@ -16,11 +16,14 @@ namespace WindowsForms
         public Form1()
         { 
             InitializeComponent();
-           
+        
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if  (Convert.ToDouble(textBox1.Text) != 0 || textBox1.Text != "")
             label2.Text = (Math.Round(Convert.ToDouble(textBox1.Text) / 2.205,3)).ToString();
         }
 

@@ -22,11 +22,10 @@ namespace WindowsForms
             button1.Click += Button1_Click;
             textBox1.KeyPress += TextBox2_KeyPress;
             textBox2.KeyPress += TextBox2_KeyPress;
-          
+         
   
            
         }
-
 
         private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -73,24 +72,38 @@ namespace WindowsForms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (s == 0 && m == 0) { MessageBox.Show("ВРЕМЯ ВЫШЛО", "Таймер"); timer1.Stop(); }
-            if (s == 0)
+            if (s == 0 && m == 0)
             {
-                s = 59;
-                textBox2.Text = s.ToString();
-                if (m != 0)
-                    textBox1.Text = (--m).ToString();
-            }
-            if (m <= 9) textBox1.Text = $"0{m}";
-            if (s <= 9)
-            {
-                textBox2.Text = s--.ToString();
-                textBox2.Text = $"0{s}";
+                timer1.Stop();
+                DialogResult result = MessageBox.Show("ВРЕМЯ ВЫШЛО", "Таймер");
+                if (result == DialogResult.OK)
+                {
+                    textBox1.ReadOnly = false;
+                    textBox2.ReadOnly = false;
+                    textBox1.Text = "00";
+                    textBox2.Text = "00";
+                    button1.Text = "Start";
+                }
             }
             else
-                textBox2.Text = s--.ToString();
+            {
+                if (s == 0)
+                {
+                    s = 59;
+                    textBox2.Text = s.ToString();
+                    if (m != 0)
+                        textBox1.Text = (--m).ToString();
+                }
+                if (m <= 9) textBox1.Text = $"0{m}";
+                if (s <= 9)
+                {
+                    textBox2.Text = s--.ToString();
+                    textBox2.Text = $"0{s}";
+                }
+                else
+                    textBox2.Text = s--.ToString();
 
-
+            }
 
 
 
