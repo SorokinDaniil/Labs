@@ -60,6 +60,10 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.maxlabel = new System.Windows.Forms.Label();
+            this.minlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -141,12 +145,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(400, 9);
+            this.label8.Location = new System.Drawing.Point(373, 359);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 17);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Laba 6";
+            this.label8.Text = "Laba 7";
             // 
             // textBox2
             // 
@@ -349,11 +353,47 @@
             this.label21.Size = new System.Drawing.Size(0, 17);
             this.label21.TabIndex = 21;
             // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(435, 359);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(353, 22);
+            this.textBox8.TabIndex = 22;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(697, 406);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 23;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // maxlabel
+            // 
+            this.maxlabel.AutoSize = true;
+            this.maxlabel.Location = new System.Drawing.Point(333, 406);
+            this.maxlabel.Name = "maxlabel";
+            this.maxlabel.Size = new System.Drawing.Size(0, 17);
+            this.maxlabel.TabIndex = 25;
+            // 
+            // minlabel
+            // 
+            this.minlabel.AutoSize = true;
+            this.minlabel.Location = new System.Drawing.Point(333, 424);
+            this.minlabel.Name = "minlabel";
+            this.minlabel.Size = new System.Drawing.Size(0, 17);
+            this.minlabel.TabIndex = 25;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.minlabel);
+            this.Controls.Add(this.maxlabel);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label20);
@@ -389,6 +429,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form7";
             this.Text = "Form7";
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,5 +469,9 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label maxlabel;
+        private System.Windows.Forms.Label minlabel;
     }
 }

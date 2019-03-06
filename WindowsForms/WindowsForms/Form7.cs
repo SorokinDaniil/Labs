@@ -24,6 +24,7 @@ namespace WindowsForms
             button4.Click += Button4_Click;
             button1.Click += Button1_Click;
             button3.Click += Button3_Click;
+          
             //Laba 4
             list = new List<int>();
             textBox5.KeyPress += TextBox1_KeyPress;
@@ -34,15 +35,10 @@ namespace WindowsForms
             double z = 0.512;
             double resault = Math.Pow(2, -x) * (Math.Sqrt(x + (Math.Pow(Math.Abs(y), 1 / 4)))) * (Math.Pow(Math.Pow(Math.E, x - 1 / Math.Sin(z)), 1 / 3));
             label1.Text = resault.ToString();
+            //Laba 7
+            button5.Click += Button5_Click;
+            textBox8.KeyPress += TextBox8_KeyPress;
         }
-
-      
-
-
-
-
-
-
 
         //Laba 2
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -135,7 +131,7 @@ namespace WindowsForms
         //Laba 6
         private void Button4_Click(object sender, EventArgs e)
         {
-            int resault = 0;
+  
             Random random = new Random();
             int[] sum = new int[5];
             int[,] mas = new int[5,5];
@@ -154,21 +150,38 @@ namespace WindowsForms
                 label21.Text += sum[i].ToString() + "\n";
                 label18.Text += "\n";
             }
-            label19.Text = sum.Min().ToString();
-            //for (int i = 0; i < mas.Length; i++)
-            //{
-            //    if (mas[i] < 0)
-            //    {
-            //        for (int j = i; j < mas.Length; j++)
-            //        {
-            //            resault += mas[j];
-            //        }
-            //        break;
-            //    }
-            //}
-            //label16.Text = resault.ToString();
+            label19.Text = sum.Min().ToString();  
+        }
+        //Laba 7
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            string[] masstr;
+            //foreach (string in masstr)
+            string str = textBox8.Text;
+            masstr = str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            int max = masstr[0].Length, min = masstr[0].Length;
+            string maxstr = "", minstr = "";
+            foreach (string s in masstr)
+            {
+                if (s.Length >= max) { max = s.Length; maxstr = s; }
+                if (s.Length <= min) { min = s.Length; minstr = s; }
+            }
+            maxlabel.Text = maxstr;
+            minlabel.Text = minstr;
+
+
         }
 
-     
+        private void TextBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != ' ' && l !=  8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        
     }
 }

@@ -30,3 +30,6 @@ C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForm
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.csproj.CoreCompileInputs.cache
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.exe
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.pdb
+C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form8.resources
+C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form9.resources
+C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form10.resources
