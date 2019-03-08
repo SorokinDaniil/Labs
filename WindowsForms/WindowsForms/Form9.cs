@@ -12,6 +12,7 @@ namespace WindowsForms
 {
     public partial class Form9 : Form
     {
+        Form10 form10;
         public Form9()
         {
             InitializeComponent();
@@ -35,7 +36,14 @@ namespace WindowsForms
             else
              if (radioButton2.Checked == true)
               str = textBox1.Text.ToUpper();
-            MessageBox.Show(str);
+
+            if (form10 != null)
+                form10.Close();
+            
+                form10 = new Form10(str);
+                form10.Show();
+       
+             
         }
 
         private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)

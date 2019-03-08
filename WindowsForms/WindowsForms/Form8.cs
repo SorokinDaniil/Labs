@@ -17,20 +17,17 @@ namespace WindowsForms
             InitializeComponent();
             exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
             inputToolStripMenuItem.Click += InputToolStripMenuItem_Click;
-            workToolStripMenuItem.Click += WorkToolStripMenuItem_Click;
+            aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
         }
 
-        private void WorkToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form10 form10 = new Form10();
-            
-            form10.Show();
+            MessageBox.Show("Create by SOROKIN");
         }
 
         private void InputToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form9 form9 = new Form9();
-            
             form9.Show();
         }
 

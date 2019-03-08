@@ -12,9 +12,10 @@ namespace WindowsForms
 {
     public partial class Form10 : Form
     {
-        public Form10()
+        public Form10(string str)
         {
             InitializeComponent();
+            label1.Text = str;
         }
     }
 }
