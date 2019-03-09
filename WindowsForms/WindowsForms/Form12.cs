@@ -31,6 +31,27 @@ namespace WindowsForms
                 labels[i] = new Label();
             openFileDialog1.Filter = "Ярлык(*.lnk)|*.lnk";
             numericUpDown1.Maximum = labels.Length;
+            namecombo.KeyPress += Namecombo_KeyPress;
+            datecombo.KeyPress += Datecombo_KeyPress;
+            pathcombo.KeyPress += Pathcombo_KeyPress;
+        }
+
+        private void Namecombo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            datecombo.Text = "";
+            pathcombo.Text = "";
+        }
+
+        private void Pathcombo_KeyPress(object sender, EventArgs e)
+        {
+            namecombo.Text = "";
+            datecombo.Text = "";
+        }
+
+        private void Datecombo_KeyPress(object sender, EventArgs e)
+        {
+            namecombo.Text = "";
+            pathcombo.Text = "";
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,28 +81,44 @@ namespace WindowsForms
         {
             dataGridView1.Rows.Clear();
             dataGridView1.RowCount = 1;
-            bool IsCheckAllItemsClear = true;
             int countrows = 0;
+            bool IsCheckAllItemsClear = true;
             for (int i = 0; i < labels.Length; i++)
-            {
-                if (IsArrayItemClear(i)) continue;
-                else
-                {
-                    dataGridView1.RowCount++;
-                    IsCheckAllItemsClear = false;
-                    ShowArrayItem(countrows, i);
-                    countrows++;
-                }
-            }
+                ShowAllArray("1", "", ref countrows, ref IsCheckAllItemsClear, i);
             if (IsCheckAllItemsClear)
+              MessageBox.Show("Массив пуст");
+            
+        }
+
+        private void ShowAllArray (string valuearray , string valuecombobox,ref int countrows,ref bool IsCheckAllItemsClear,int i)
+        {
+            if (!IsArrayItemClear(i) || valuearray == valuecombobox)
             {
-                MessageBox.Show("Массив пуст");
+                dataGridView1.RowCount++;
+                IsCheckAllItemsClear = false;
+                ShowArrayItem(countrows, i);
+                countrows++;
             }
         }
 
         private void Searchbutton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //string searchdata;
+
+            //if (namecombo.Text != "")
+            //    searchdata = namecombo.Text;
+            //if (datecombo.Text != "")
+            //    searchdata = datecombo.Text;
+            //if (pathcombo.Text != "")
+            //    searchdata = pathcombo.Text;
+            //for (int i = 0; i < labels.Length; i++)
+            //{
+            //    if (labels[i].LabelName == namecombo.Text)
+
+            //}
+
+
+
         }
 
         private void Editbutton_Click(object sender, EventArgs e)
@@ -130,11 +167,6 @@ namespace WindowsForms
         {
             if (labels[index].LabelName == null && labels[index].DataCreate == Convert.ToDateTime("01.01.0001 0:00:00") && labels[index].FilePath == null) return true;
             return false;
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
