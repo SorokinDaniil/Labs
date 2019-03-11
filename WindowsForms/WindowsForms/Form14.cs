@@ -11,14 +11,14 @@ using System.IO;
 
 namespace WindowsForms
 {
-    public partial class Form12 : Form
+    public partial class Form14 : Form
     {
         AutoCompleteStringCollection namechange = new AutoCompleteStringCollection();
         AutoCompleteStringCollection datechange = new AutoCompleteStringCollection();
         AutoCompleteStringCollection pathchange = new AutoCompleteStringCollection();
         Label[] labels = new Label[10];
         int index;
-        public Form12()
+        public Form14()
         {
             InitializeComponent();
             numericUpDown1.ValueChanged += NumericUpDown1_ValueChanged;
@@ -83,11 +83,11 @@ namespace WindowsForms
             dataGridView1.Rows.Clear();
             dataGridView1.RowCount = 1;
             int countrows = 0;
-            for (int i =0;i<labels.Length;i++)
-            ShowAllArray("", "",ref countrows,i);
+            for (int i = 0; i < labels.Length; i++)
+                ShowAllArray("", "", ref countrows, i);
         }
 
-        private void ShowAllArray(string valuearray, string valuecombobox,ref int countrows,int i)
+        private void ShowAllArray(string valuearray, string valuecombobox, ref int countrows, int i)
         {
             if (!IsArrayItemClear(i) && valuearray == valuecombobox)
             {
@@ -105,25 +105,25 @@ namespace WindowsForms
             dataGridView1.RowCount = 1;
             if (namecombo.Text != "")
                 for (int i = 0; i < labels.Length; i++)
-                    ShowAllArray(labels[i].LabelName, namecombo.Text, ref countrows,i);
+                    ShowAllArray(labels[i].LabelName, namecombo.Text, ref countrows, i);
             if (datecombo.Text != "")
                 for (int i = 0; i < labels.Length; i++)
-                    ShowAllArray(labels[i].DataCreate.ToShortDateString(), datecombo.Text, ref countrows,i);
+                    ShowAllArray(labels[i].DataCreate.ToShortDateString(), datecombo.Text, ref countrows, i);
             if (pathcombo.Text != "")
                 for (int i = 0; i < labels.Length; i++)
-                    ShowAllArray(labels[i].FilePath, pathcombo.Text, ref countrows,i);
+                    ShowAllArray(labels[i].FilePath, pathcombo.Text, ref countrows, i);
         }
 
         private void IsCheckAllArrayItemsClear()
         {
             bool check = true;
-            for (int i=0;i<labels.Length;i++)
+            for (int i = 0; i < labels.Length; i++)
             {
                 if (!IsArrayItemClear(i))
                     check = false;
             }
             if (check)
-            MessageBox.Show("Массив пуст");
+                MessageBox.Show("Массив пуст");
         }
 
         private void Editbutton_Click(object sender, EventArgs e)
@@ -141,9 +141,9 @@ namespace WindowsForms
             namechange.Clear();
             datechange.Clear();
             pathchange.Clear();
-            for (int i=0;i<labels.Length;i++)
+            for (int i = 0; i < labels.Length; i++)
             {
-                if(!IsArrayItemClear(i))
+                if (!IsArrayItemClear(i))
                 {
                     namechange.Add(labels[i].LabelName);
                     datechange.Add(labels[i].DataCreate.ToShortDateString());
@@ -160,7 +160,7 @@ namespace WindowsForms
             index = (int)numericUpDown1.Value - 1;
         }
 
-        private void ShowArrayItem(int countrows,int index)
+        private void ShowArrayItem(int countrows, int index)
         {
             dataGridView1.Rows[countrows].Cells[0].Value = $"Label[{index + 1}]";
             dataGridView1.Rows[countrows].Cells[1].Value = labels[index].LabelName;

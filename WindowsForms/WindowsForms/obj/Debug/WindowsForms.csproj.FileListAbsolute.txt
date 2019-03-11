@@ -40,3 +40,6 @@ C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.For
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form12.resources
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form11.resources
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form12.resources
+C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form13.resources
+C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form13.resources
+C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form14.resources
