@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,8 @@ namespace WindowsForms
         AutoCompleteStringCollection namechange = new AutoCompleteStringCollection();
         AutoCompleteStringCollection datechange = new AutoCompleteStringCollection();
         AutoCompleteStringCollection pathchange = new AutoCompleteStringCollection();
-        Label[] labels = new Label[10];
+        List<Label> labels = new List<Label>();
+        //Label[] labels = new Label[10];
         int index;
         public Form14()
         {
@@ -27,13 +29,36 @@ namespace WindowsForms
             allLabelsToolStripMenuItem.Click += AllLabelsToolStripMenuItem_Click;
             editbutton.Click += Editbutton_Click;
             searchbutton.Click += Searchbutton_Click;
-            for (int i = 0; i < labels.Length; i++)
-                labels[i] = new Label();
-            openFileDialog1.Filter = "Ярлык(*.lnk)|*.lnk";
-            numericUpDown1.Maximum = labels.Length;
+            addToolStripMenuItem.Click += AddToolStripMenuItem_Click;
+            deleteToolStripMenuItem.Click += DeleteToolStripMenuItem_Click;
+            //for (int i = 0; i < labels.Count; i++)
+            //    labels[i] = new Label();
             namecombo.KeyPress += Namecombo_KeyPress;
             datecombo.KeyPress += Datecombo_KeyPress;
             pathcombo.KeyPress += Pathcombo_KeyPress;
+
+            openFileDialog1.Filter = "Ярлык(*.lnk)|*.lnk";
+            numericUpDown1.Maximum = labels.Count;
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (labels.Count != 0)
+            {
+                labels.RemoveAt(index);
+                numericUpDown1.Maximum = labels.Count;
+                MessageBox.Show("Элемент успешно удален");
+            }
+            else
+                MessageBox.Show("Список пуст");
+        }
+
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            labels.Add(new Label());
+            numericUpDown1.Minimum = 1;
+            numericUpDown1.Maximum = labels.Count;
+            MessageBox.Show("Элемент успешно добавлен");
         }
 
         private void Namecombo_KeyPress(object sender, KeyPressEventArgs e)
@@ -56,45 +81,64 @@ namespace WindowsForms
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filepath;
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            filepath = openFileDialog1.FileName;
-            name.Text = Path.GetFileNameWithoutExtension(filepath);
-            date.Text = File.GetCreationTime(filepath).ToShortDateString();
-            path.Text = filepath;
+            if (labels.Count != 0)
+            {
+                string filepath;
+                if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                    return;
+                filepath = openFileDialog1.FileName;
+                name.Text = Path.GetFileNameWithoutExtension(filepath);
+                date.Text = File.GetCreationTime(filepath).ToShortDateString();
+                path.Text = filepath;
+            }
+            else
+                MessageBox.Show("Список пуст");
         }
 
         private void CurrentLabelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (!IsArrayItemClear(index))
+            if (labels.Count != 0)
+            {
+                if (!IsArrayItemClear(index))
             {
                 dataGridView1.RowCount = 2;
                 ShowArrayItem(0, index);
             }
             else
-                MessageBox.Show("Это элемент массива пуст");
+                MessageBox.Show("Это элемент списка пуст");
+        }
+            else
+                MessageBox.Show("Список пуст");
         }
 
         private void AllLabelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IsCheckAllArrayItemsClear();
+            if (labels.Count != 0)
+            {
+                IsCheckAllArrayItemsClear();
             dataGridView1.Rows.Clear();
             dataGridView1.RowCount = 1;
             int countrows = 0;
-            for (int i = 0; i < labels.Length; i++)
+            for (int i = 0; i < labels.Count; i++)
                 ShowAllArray("", "", ref countrows, i);
+            }
+            else
+                MessageBox.Show("Список пуст");
         }
 
         private void ShowAllArray(string valuearray, string valuecombobox, ref int countrows, int i)
         {
-            if (!IsArrayItemClear(i) && valuearray == valuecombobox)
+            if (labels.Count != 0)
+            {
+                if (!IsArrayItemClear(i) && valuearray == valuecombobox)
             {
                 dataGridView1.RowCount++;
                 ShowArrayItem(countrows, i);
                 countrows++;
             }
+        }
+            else
+                MessageBox.Show("Список пуст");
         }
 
         private void Searchbutton_Click(object sender, EventArgs e)
@@ -104,26 +148,26 @@ namespace WindowsForms
             dataGridView1.Rows.Clear();
             dataGridView1.RowCount = 1;
             if (namecombo.Text != "")
-                for (int i = 0; i < labels.Length; i++)
+                for (int i = 0; i < labels.Count; i++)
                     ShowAllArray(labels[i].LabelName, namecombo.Text, ref countrows, i);
             if (datecombo.Text != "")
-                for (int i = 0; i < labels.Length; i++)
+                for (int i = 0; i < labels.Count; i++)
                     ShowAllArray(labels[i].DataCreate.ToShortDateString(), datecombo.Text, ref countrows, i);
             if (pathcombo.Text != "")
-                for (int i = 0; i < labels.Length; i++)
+                for (int i = 0; i < labels.Count; i++)
                     ShowAllArray(labels[i].FilePath, pathcombo.Text, ref countrows, i);
         }
 
         private void IsCheckAllArrayItemsClear()
         {
             bool check = true;
-            for (int i = 0; i < labels.Length; i++)
+            for (int i = 0; i < labels.Count; i++)
             {
                 if (!IsArrayItemClear(i))
                     check = false;
             }
             if (check)
-                MessageBox.Show("Массив пуст");
+                MessageBox.Show("Список пуст");
         }
 
         private void Editbutton_Click(object sender, EventArgs e)
@@ -141,7 +185,7 @@ namespace WindowsForms
             namechange.Clear();
             datechange.Clear();
             pathchange.Clear();
-            for (int i = 0; i < labels.Length; i++)
+            for (int i = 0; i < labels.Count; i++)
             {
                 if (!IsArrayItemClear(i))
                 {

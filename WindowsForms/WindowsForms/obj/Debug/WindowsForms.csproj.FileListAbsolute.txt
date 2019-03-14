@@ -43,3 +43,4 @@ C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForm
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form13.resources
 C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form13.resources
 C:\Users\niga_\Desktop\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form14.resources
+C:\Users\niga_\Desktop\Labs\Labs\WindowsForms\WindowsForms\obj\Debug\WindowsForms.Form14.resources
