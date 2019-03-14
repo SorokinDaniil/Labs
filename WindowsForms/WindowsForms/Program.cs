@@ -27,7 +27,7 @@ namespace WindowsForms
             //Application.Run(new Form11());
             //Application.Run(new Form12());
             //Application.Run(new Form13());
-            Application.Run(new Form14());
+            Application.Run(new Form13());
         }
     }
 }

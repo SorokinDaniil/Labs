@@ -44,33 +44,34 @@ namespace WindowsForms
                 else
                 if (IsCellClear()) throw new Exception("Введите полную информацию");
                 else
+                  if (!IsCloneColumnID()) throw new Exception("ID повторяется");
+                else
                 {
-                    StreamWriter sw = new StreamWriter(listfile[indexopenfile].FullName);
-        
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                    using (StreamWriter sw = new StreamWriter(listfile[indexopenfile].FullName))
                     {
-                        string date = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                        if (DateTime.TryParse(date, out from))
+                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                         {
-                            if (DateTime.Parse(date) >= from && DateTime.Parse(date) <= to)
+                            string date = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                            if (DateTime.TryParse(date, out from))
                             {
-                                //Если значение даты прошло валидацию , то мы перезаписываем значения в файле
-                                for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                                if (DateTime.Parse(date) >= from && DateTime.Parse(date) <= to)
                                 {
-                                    sw.WriteLine(dataGridView1.Rows[i].Cells[j].Value);
-                                }
-                               
-                            }
-                            else throw new Exception("Неверный формат даты");
-                        }
-                        else
-                            throw new Exception("Неверный формат даты");
-                    }
+                                    //Если значение даты прошло валидацию , то мы перезаписываем значения в файле
+                                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                                    {
+                                        sw.WriteLine(dataGridView1.Rows[i].Cells[j].Value);
+                                    }
 
-                    sw.Close();
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.AllowUserToAddRows = false;
-                    MessageBox.Show("Все ок");
+                                }
+                                else throw new Exception("Неверный формат даты");
+                            }
+                            else
+                                throw new Exception("Неверный формат даты");
+                        }
+                    } 
+                        dataGridView1.Rows.Clear();
+                        dataGridView1.AllowUserToAddRows = false;
+                        MessageBox.Show("Все ок");
                 }
             }
             catch (Exception ex)
@@ -78,6 +79,24 @@ namespace WindowsForms
                 MessageBox.Show(ex.Message,"Error");
             }
         }
+        private bool IsCloneColumnID ()
+        {
+            for (int i=0;i<dataGridView1.RowCount -1;i++)
+            {
+                for (int j=0;j< dataGridView1.RowCount - 1;j++)
+                {
+                    if (i != j)
+                    {
+                        if (dataGridView1.Rows[i].Cells[0].Value == dataGridView1.Rows[j].Cells[0].Value)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
 
         private void ShowFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -95,15 +114,15 @@ namespace WindowsForms
                         DialogResult result = MessageBox.Show("Файл пуст. Хотите добавить записи ?", "Сообщение", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            //dataGridView1.RowCount = 2;
-                            //dataGridView1.Rows[0].Cells[0].Value = "123";
-                            //dataGridView1.Rows[0].Cells[1].Value = "asfsda";
-                            //dataGridView1.Rows[0].Cells[2].Value = "sdfsdf";
-                            //dataGridView1.Rows[0].Cells[3].Value = "22.05.2000";
-                            //dataGridView1.Rows[1].Cells[0].Value = "464";
-                            //dataGridView1.Rows[1].Cells[1].Value = "asfsda";
-                            //dataGridView1.Rows[1].Cells[2].Value = "sdfsdf";
-                            //dataGridView1.Rows[1].Cells[3].Value = "22.06.2004";
+                            dataGridView1.RowCount = 2;
+                            dataGridView1.Rows[0].Cells[0].Value = "123";
+                            dataGridView1.Rows[0].Cells[1].Value = "asfsda";
+                            dataGridView1.Rows[0].Cells[2].Value = "sdfsdf";
+                            dataGridView1.Rows[0].Cells[3].Value = "22.05.2000";
+                            dataGridView1.Rows[1].Cells[0].Value = "123";
+                            dataGridView1.Rows[1].Cells[1].Value = "asfsda";
+                            dataGridView1.Rows[1].Cells[2].Value = "sdfsdf";
+                            dataGridView1.Rows[1].Cells[3].Value = "22.06.2004";
                             indexopenfile = index;
                             dataGridView1.AllowUserToAddRows = true;
                             label3.Text = Path.GetFileNameWithoutExtension(listfile[index].FullName);
@@ -146,12 +165,7 @@ namespace WindowsForms
                         //}
                     }
                 }
-
-            }
-        
-            
-                    
-          
+            }   
         }
 
         private bool IsCellClear()
